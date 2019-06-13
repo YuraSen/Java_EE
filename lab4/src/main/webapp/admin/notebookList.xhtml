@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Notebook List</title>
+</h:head>
+<h:body>
+    <center><h2><h:outputText value="Notebooks"/></h2></center>
+    <h:form id="notebookForm">
+        <h:dataTable id="notebookTable" binding="#{table}" value="#{notebookBean.allNotebooks()}" var="notebook" class="notebookTable">
+            <h:column>
+                <f:facet name="header">Number</f:facet>
+                <h:outputText id="id" value="#{notebook.getId()}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Brand</f:facet>
+                <h:outputText id="brand" value="#{notebook.getBrand()}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Processor</f:facet>
+                <h:outputText id="processor" value="#{notebook.getProcessor()}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Videocard</f:facet>
+                <h:outputText id="videocard" value="#{notebook.getVideocard()}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Series</f:facet>
+                <h:outputText id="series" value="#{notebook.getSeries()}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header">Owner</f:facet>
+                <h:outputText id="owner" value="#{notebook.getUser().login}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"/>
+                <h:commandButton action="#{notebookBean.toUpdatePage(notebook.getId())}" value="Update" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"/>
+                <h:commandButton action="#{notebookBean.deleteNotebook(notebook.getId())}" value="Delete" />
+            </h:column>
+        </h:dataTable>
+        <center>
+            <h:commandButton action = "/admin/addNotebook.xhtml?faces-redirect=true" value = "Add Notebook" />
+            <h:commandButton action = "/user/notebookList.xhtml?faces-redirect=true" value = "Your Notebooks" />
+            <h:commandButton action = "#{securityBean.logout()}" value = "LogOut" />
+        </center>
+    </h:form>
+</h:body>
+
+
+</html>

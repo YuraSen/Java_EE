@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:d="http://localhost/facelets">
+
+<h:head>
+    <title>Update Notebook</title>
+    <f:metadata>
+        <f:viewParam name="id" value="#{notebookBean.id}" required="true" />
+        <f:viewParam name="brand" value="#{notebookBean.brand}" required="true" />
+        <f:viewParam name="processor" value="#{notebookBean.processor}" required="true" />
+        <f:viewParam name="videocard" value="#{notebookBean.videocard}" required="true" />
+        <f:viewParam name="series" value="#{notebookBean.series}" required="true" />
+    </f:metadata>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h2><h:outputText value="Update notebook with id#{notebookBean.id}"/></h2>
+
+        <d:myComponent></d:myComponent>
+
+        <h:commandButton action = "#{notebookBean.updateNotebook(notebookBean.id)}" value = "Update" />
+        <h:commandButton action = "notebookList.xhtml?faces-redirect=true" value = "Return" />
+    </h:form>
+</h:body>
+
+
+</html>
